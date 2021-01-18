@@ -1,23 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import Timer from "./Timer";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Timer
+        step={100}
+        autoStart={true}
+        onTimeEnd={() => console.log("Час вийшов!")}
+        onTimeStart={(timeLeft) => {
+          console.log("Таймер запущено!");
+        }}
+        onTimePause={(timeLeft) => {
+          console.log("Таймер на паузі!");
+        }}
+      />
+      <Timer
+        step={500}
+        autoLoop={true}
+        onTimeEnd={() => console.log("Час вийшов!")}
+        onTimeStart={(timeLeft) => {
+          console.log("Таймер запущено!");
+        }}
+        onTimePause={(timeLeft) => {
+          console.log("Таймер на паузі!");
+        }}
+      />
+      <Timer
+        autoLoop={false}
+        startTime={500000}
+        onTimeEnd={() => console.log("Час вийшов!")}
+        onTimeStart={(timeLeft) => {
+          console.log("Таймер запущено!");
+        }}
+        onTimePause={(timeLeft) => {
+          console.log("Таймер на паузі!");
+        }}
+      />
     </div>
   );
 }
