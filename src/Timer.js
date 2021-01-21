@@ -14,20 +14,14 @@ function Timer({
   const [timerId, setTimerId] = useState(null);
   const [currentTime, setCurrentTime] = useState(startTime);
 
-  useEffect(() => {
-    if (autoStart) {
-      start();
-    }
-  }, []);
+  useEffect(() => autoStart && start(), []);
 
   useEffect(() => {
     if (currentTime < 0) {
       stop();
       onTimeEnd();
       setCurrentTime(startTime);
-      if (autoLoop) {
-        start();
-      }
+      autoLoop && start();
     }
   });
 
